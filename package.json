@@ -1,7 +1,7 @@
 {
   "name": "kodi-ws",
   "version": "2.4.2",
-  "main": "lib/kodi-ws.js",
+  "main": "dist/kodi-ws.js",
   "author": "Florian Albertz",
   "contributors": [
     "Links 2004",
@@ -11,24 +11,69 @@
   "description": "A wrapper for the kodi jsonrpc interface",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaulAvery/kodi-ws.git"
+    "url": "https://github.com/DanielRamosAcosta/kodi-ws.git"
   },
+  "bugs": {
+    "url": "https://github.com/DanielRamosAcosta/kodi-ws/issues"
+  },
+  "homepage": "https://github.com/DanielRamosAcosta/kodi-ws",
   "keywords": [
     "kodi",
     "jsonrpc",
     "json-rpc"
   ],
   "scripts": {
-    "test": "make lint"
+    "test": "gulp",
+    "lint": "gulp lint",
+    "test": "gulp test",
+    "watch": "gulp watch",
+    "build": "gulp build"
   },
   "dependencies": {
-    "babel-eslint": "^5.0.0-beta8",
-    "has-value": "^0.2.0",
-    "jrpc-schema": "^2.1.0",
-    "set-value": "^0.2.0",
-    "ws": "^0.7.2"
+    "jrpc-schema": "2.1.0"
   },
   "devDependencies": {
-    "eslint": "^1.9.0"
+    "babel-core": "6.13.2",
+    "babel-loader": "6.2.4",
+    "babel-polyfill": "6.13.0",
+    "babel-preset-es2015": "6.13.2",
+    "babel-register": "6.11.6",
+    "chai": "3.5.0",
+    "chai-as-promised": "5.3.0",
+    "del": "2.2.1",
+    "glob": "7.0.5",
+    "gulp": "3.9.1",
+    "gulp-eslint": "3.0.1",
+    "gulp-filter": "4.0.0",
+    "gulp-livereload": "3.8.1",
+    "gulp-load-plugins": "1.2.4",
+    "gulp-mocha": "3.0.0",
+    "gulp-plumber": "1.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-standard": "7.0.1",
+    "gulp-uglify": "2.0.0",
+    "json-loader": "0.5.4",
+    "mocha": "3.0.2",
+    "sinon": "1.17.5",
+    "sinon-chai": "2.8.0",
+    "webpack": "1.13.1",
+    "webpack-stream": "3.2.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
+  },
+  "packageOptions": {
+    "entryFileName": "kodi-ws.js",
+    "mainVarName": "KodiWS"
   }
 }
