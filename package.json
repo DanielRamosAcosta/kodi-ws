@@ -74,7 +74,8 @@
       "after",
       "afterEach",
       "it",
-      "expect"
+      "expect",
+      "spy"
     ]
   },
   "packageOptions": {

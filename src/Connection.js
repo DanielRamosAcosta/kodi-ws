@@ -52,7 +52,7 @@ export default class Connection extends EventEmitter {
     }
 
     this.socket.onerror = err => {
-      if (! this.socketTimedOut) {
+      if (!this.socketTimedOut) {
         console.log(err)
         this.emit('error')
       }
@@ -110,7 +110,7 @@ export default class Connection extends EventEmitter {
   }
 
   run (method) {
-    if(!this.schema) throw new Error('Connection not initialized!')
+    if (!this.schema) throw new Error('Connection not initialized!')
 
     const args = Array.prototype.slice.call(arguments, 1)
     const methods = this.schema.schema.methods
@@ -120,7 +120,7 @@ export default class Connection extends EventEmitter {
 
   notification (method) {
     return new Promise((resolve, reject) => {
-      if(!this.schema) return reject('Connection not initialized!')
+      if (!this.schema) return reject('Connection not initialized!')
 
       this.schema.schema.notifications[method](resolve)
     })

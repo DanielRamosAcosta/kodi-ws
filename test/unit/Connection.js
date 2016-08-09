@@ -14,7 +14,7 @@ describe('Connection#constructor', () => {
       setTimeout(() => {
         expect(connectSpy).to.have.been.calledOnce
         expect(errorSpy).to.not.have.been.called
-        done();
+        done()
       }, eventTime)
     })
   })
@@ -37,7 +37,7 @@ describe('Connection#constructor', () => {
 
   context('Edge cases', () => {
     context('with wrong host', () => {
-      it('should call error event', function(done) {
+      it('should call error event', function (done) {
         this.timeout(30000)
         let connectSpy = spy()
         let errorSpy = spy()

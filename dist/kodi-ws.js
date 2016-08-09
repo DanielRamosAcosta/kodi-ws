@@ -235,6 +235,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      });
 	    }
+	  }, {
+	    key: 'batch',
+	    value: function batch() {
+	      var rawBatch = this.schema.batch();
+	      var batch = {
+	        send: rawBatch.send.bind(rawBatch)
+	      };
+	
+	      var methods = rawBatch.schema.methods;
+	
+	
+	      Object.keys(methods).forEach(function (method) {
+	        if (!(0, _hasValue2.default)(batch, method)) {
+	          (0, _setValue2.default)(batch, method, methods[method]);
+	        }
+	      });
+	
+	      return batch;
+	    }
+	  }, {
+	    key: 'run',
+	    value: function run(method) {
+	      if (!this.schema) throw new Error('Connection not initialized!');
+	
+	      var args = Array.prototype.slice.call(arguments, 1);
+	      var methods = this.schema.schema.methods;
+	
+	      return methods[method].apply(methods, args);
+	    }
+	  }, {
+	    key: 'notification',
+	    value: function notification(method) {
+	      var _this5 = this;
+	
+	      return new Promise(function (resolve, reject) {
+	        if (!_this5.schema) return reject('Connection not initialized!');
+	
+	        _this5.schema.schema.notifications[method](resolve);
+	      });
+	    }
 	  }]);
 	
 	  return Connection;
