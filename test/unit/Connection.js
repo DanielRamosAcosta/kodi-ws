@@ -2,8 +2,6 @@ import Connection from '../../src/Connection'
 
 const eventTime = 600
 
-console.log(Connection)
-
 describe('Connection#constructor', () => {
   context('with the default parameters', () => {
     it('should create a new instance and connect to kodi', done => {
@@ -12,6 +10,7 @@ describe('Connection#constructor', () => {
       const connection = new Connection()
       connection.on('connect', connectSpy)
       connection.on('error', errorSpy)
+      console.log(connection)
       setTimeout(() => {
         expect(connectSpy).to.have.been.calledOnce
         expect(errorSpy).to.not.have.been.called

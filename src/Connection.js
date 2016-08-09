@@ -91,4 +91,38 @@ export default class Connection extends EventEmitter {
       }
     })
   }
+
+  batch () {
+    const rawBatch = this.schema.batch()
+    const batch = {
+      send: rawBatch.send.bind(rawBatch)
+    }
+
+    let { methods } = rawBatch.schema
+
+    Object.keys(methods).forEach(method => {
+      if (!has(batch, method)) {
+        set(batch, method, methods[method])
+      }
+    })
+
+    return batch
+  }
+
+  run (method) {
+    if(!this.schema) throw new Error('Connection not initialized!')
+
+    const args = Array.prototype.slice.call(arguments, 1)
+    const methods = this.schema.schema.methods
+
+    return methods[method].apply(methods, args)
+  }
+
+  notification (method) {
+    return new Promise((resolve, reject) => {
+      if(!this.schema) return reject('Connection not initialized!')
+
+      this.schema.schema.notifications[method](resolve)
+    })
+  }
 }
