@@ -52,13 +52,16 @@ export default class Connection extends EventEmitter {
     }
 
     this.socket.onerror = err => {
-      err.message = `Socket error: ${err.message}`
-      this.emit('error', err)
+      if (! this.socketTimedOut) {
+        console.log(err)
+        this.emit('error')
+      }
     }
 
     setTimeout(() => {
       if (this.socket.readyState === CONNECTING) {
         this.emit('error', new Error('Timed out'))
+        this.socketTimedOut = true
       }
     }, this.timeout)
   }

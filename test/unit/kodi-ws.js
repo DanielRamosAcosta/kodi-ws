@@ -6,7 +6,6 @@ describe('KodiWS', () => {
     it('resolves an instance of Connection', done => {
       KodiWS('127.0.0.1', 9090).then(connection => {
         expect(connection).to.be.an.instanceof(Connection)
-        console.log(connection)
         done()
       })
     })
