@@ -88,7 +88,7 @@ function testBrowser () {
   const allFiles = ['./test/setup/browser.js'].concat(testFiles)
 
   // Lets us differentiate between the first build and subsequent builds
-  let firstBuild = true;
+  let firstBuild = true
 
   // This empty stream might seem like a hack, but we need to specify all of our files through
   // the `entry` option of webpack. Otherwise, it ignores whatever file(s) are placed in here.
